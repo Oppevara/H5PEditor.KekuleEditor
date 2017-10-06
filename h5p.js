@@ -10,6 +10,7 @@ H5PEditor.widgets.kekule_editor = H5PEditor.KekuleEditor = (function ($) {
   }
    
   C.prototype.appendTo = function ($container) {
+    
     var data = h5p_get_data_obj(this.params);
 
     var el = build("div", "kekule_wrapper");
@@ -22,12 +23,7 @@ H5PEditor.widgets.kekule_editor = H5PEditor.KekuleEditor = (function ($) {
       this.kekule.data = data.data;
     } catch(ex) {}
 
-    //  hacky wrap fix, editor widget freaks out sometimes due to h5p container wiggling during load
-    setTimeout(function() {
-      this.kekule.width = this.kekule.width;
-    }.bind(this), 1000);
   };
-
 
   C.prototype.save = function() {
     var data = {"data" : undefined};
